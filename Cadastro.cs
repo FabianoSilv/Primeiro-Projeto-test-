@@ -1,316 +1,64 @@
-﻿using System;
+﻿using Primeiro_Projeto.Model;
+using Primeiro_Projeto.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Google.Protobuf.WellKnownTypes;
-using MySql.Data.MySqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Primeiro_Projeto
 {
     public partial class Cadastro : Form
-    {
-        static string data_source = "datasource=localhost;username=root;password=H6t4pozb;database=test";
-        MySqlCommand cmd = new MySqlCommand();
-        MySqlConnection conn = new MySqlConnection(data_source);
-        private int ?id_contato_selecionado = null;
-       
-        
+    { DataBase cadastrar = new DataBase();
         public Cadastro()
         {
             InitializeComponent();
-
-            list_view.View = View.Details;
-            list_view.AllowColumnReorder = true;
-
-
-            list_view.Columns.Add("ID", 50, HorizontalAlignment.Left);
-            list_view.Columns.Add("Nome", 100, HorizontalAlignment.Left);
-            list_view.Columns.Add("Telefone", 100, HorizontalAlignment.Left);
-            list_view.Columns.Add("CPF", 100, HorizontalAlignment.Left);
-            list_view.Columns.Add("Sexo", 60, HorizontalAlignment.Left);
-
-            
-            ListarContatos();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtNome.Text) && 
-                    !string.IsNullOrEmpty(txtCPF.Text) &&
-                    !string.IsNullOrEmpty(txtSexo.Text) &&
-                    id_contato_selecionado == null)
+                if(!txt_Nome.Text.Equals("") && !mtb_CPF.Text.Equals("") && !mtb_Telefone.Text.Equals("")
+                   && !txt_Email.Text.Equals("") && !txt_Senha.Text.Equals(""))
                 {
-                    conn.Open();
-                    cmd.Connection = conn;
-
-                    cmd.CommandText = "INSERT INTO cadastro (nome, telefone, cpf, sexo)" +
-                                      "VALUES" +
-                                      "(@nome, @telefone, @cpf, @sexo)";
-
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                    cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                    cmd.Parameters.AddWithValue("@sexo", txtSexo.Text);
-
-                    cmd.ExecuteNonQuery();
-
+                    Pessoa enviar = new Pessoa();
                     
+                    enviar.nome = txt_Nome.Text;
+                    enviar.cpf = mtb_CPF.Text;
+                    enviar.telefone = mtb_Telefone.Text;
+                    enviar.email = txt_Email.Text;
+                    enviar.senha = txt_Senha.Text;
+                    enviar.acesso = "2";
+                    enviar.complemento = "Funcionario";
 
-                }
-                else if (!string.IsNullOrEmpty(txtNome.Text) &&
-                    !string.IsNullOrEmpty(txtCPF.Text) &&
-                    !string.IsNullOrEmpty(txtSexo.Text) &&
-                    id_contato_selecionado != null)
-                {
-                    conn.Open();
-                    cmd.Connection = conn;
+                    cadastrar.CadastrarPessoa(enviar);
 
-                    cmd.CommandText = "UPDATE cadastro SET " +
-                                      "nome=@nome, telefone=@telefone, cpf=@cpf, sexo=@sexo " +
-                                      "WHERE id=@id ";
-
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                    cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                    cmd.Parameters.AddWithValue("@sexo", txtSexo.Text);
-                    cmd.Parameters.AddWithValue("@id", id_contato_selecionado);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Contato atualizado com sucesso!", "Concluido",
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso!",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    
+                    this.Close();
+
                 }
                 else
                 {
-                    MessageBox.Show("Obrigatório NOME, CPF e Sexo", "Atenção!",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Obrigatorio preencher todos os campos!", "Atenção",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-
-
-                id_contato_selecionado = null;
-                txtNome.Text = string.Empty;
-                txtTelefone.Text = string.Empty;
-                txtCPF.Text = string.Empty;
-                txtSexo.Text = string.Empty;
-                
-
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Erro" + ex.Number + "ocorreu" + ex.Message,
-                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro" + ex.Message,
-                            "Erro", MessageBoxButtons.OK,
-                             MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                conn.Close();
-                ListarContatos();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               
-                conn.Open();
-                cmd.Connection = conn;
-
-                
-                cmd.CommandText = "SELECT * FROM cadastro WHERE nome LIKE (@q) OR cpf LIKE (@q) ";
-                
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@q", "%" + txtBuscar.Text + "%");
-
-                MySqlDataReader read = cmd.ExecuteReader();
-
-                list_view.Items.Clear();
-
-                while (read.Read())
-                {
-                    string[] row =
-                    {
-                        read.GetString(0),
-                        read.GetString(1),
-                        read.GetString(2),
-                        read.GetString(3),
-                        read.GetString(4),
-
-                    };
-
-                    list_view.Items.Add(new ListViewItem(row)); 
-                }
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Erro" + ex.Number + "ocorreu" + ex.Message,
-                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro" + ex.Message,
-                            "Erro", MessageBoxButtons.OK,
-                             MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        private void ListarContatos()
-        {
-            try
-            {
-
-                conn.Open();
-                cmd.Connection = conn;
-
-                cmd.CommandText = "SELECT * FROM cadastro ORDER BY id DESC ";
-
-                cmd.Prepare();
-
-
-                MySqlDataReader read = cmd.ExecuteReader();
-
-                list_view.Items.Clear();
-                
-                while (read.Read())
-                {
-                    string[] row =
-                    {
-                        read.GetString(0),
-                        read.GetString(1),
-                        read.GetString(2),
-                        read.GetString(3),
-                        read.GetString(4),
-
-                    };
-  
-                    list_view.Items.Add(new ListViewItem(row));
-
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Erro" + ex.Number + "ocorreu" + ex.Message,
-                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro" + ex.Message,
-                            "Erro", MessageBoxButtons.OK,
-                             MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        private void list_view_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ListView.SelectedListViewItemCollection itens_selecionada = list_view.SelectedItems;
-
-            foreach(ListViewItem item in itens_selecionada) 
-            {
-                id_contato_selecionado = Convert.ToInt32( item.SubItems[0].Text);
-                txtNome.Text = item.SubItems[1].Text;
-                txtTelefone.Text = item.SubItems[2].Text;
-                txtCPF.Text = item.SubItems[3].Text;
-                txtSexo.Text = item.SubItems[4].Text;
-
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if(id_contato_selecionado != null)
-            {
-
-            }
-        }
-
-        private void txtCPF_Click(object sender, EventArgs e)
-        {
-            //if (txtCPF.Text != txtCPF.Text)
-            //{
-            //    id_contato_selecionado = null;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("CPF deve ser unico para cada pessoa!",
-            //                    "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //};
-        }
-
-        private void contextMenuStrip1_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-               DialogResult conf = MessageBox.Show("Você tem certeza que deseja escliu este contato?" +
-                           "\nNome: " + txtNome.Text + "\nCPF: " + txtCPF.Text,
-                           "ATENÇÃO!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (conf == DialogResult.Yes) 
-                {
-                    conn.Open();
-
-                    cmd.CommandText = "DELETE FROM cadastro WHERE id=@id ";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@id", id_contato_selecionado);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Contato escluido com sucesso!",
-                                    "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Ocorreu um erro" + ex.Message,
-                            "Erro", MessageBoxButtons.OK,
-                             MessageBoxIcon.Error);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro" + ex.Message,
-                "Erro", MessageBoxButtons.OK,
-                 MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-                ListarContatos();
-
-            }
-        
-
-           
         }
     }
 }
-

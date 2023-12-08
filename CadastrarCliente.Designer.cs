@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
@@ -47,6 +48,10 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.Lst_View = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsExcluir = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -98,7 +103,7 @@
             this.txtEmail.Location = new System.Drawing.Point(16, 262);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(213, 22);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 4;
             // 
             // mskCPF
             // 
@@ -109,7 +114,7 @@
             this.mskCPF.Mask = "000,000,000-00";
             this.mskCPF.Name = "mskCPF";
             this.mskCPF.Size = new System.Drawing.Size(213, 22);
-            this.mskCPF.TabIndex = 8;
+            this.mskCPF.TabIndex = 2;
             this.mskCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // mskTelefone
@@ -120,7 +125,7 @@
             this.mskTelefone.Mask = "(99) 00000-0000";
             this.mskTelefone.Name = "mskTelefone";
             this.mskTelefone.Size = new System.Drawing.Size(210, 22);
-            this.mskTelefone.TabIndex = 9;
+            this.mskTelefone.TabIndex = 3;
             this.mskTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // btnSalvar
@@ -128,7 +133,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(16, 303);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(100, 23);
-            this.btnSalvar.TabIndex = 10;
+            this.btnSalvar.TabIndex = 5;
             this.btnSalvar.Text = "Salva";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -146,15 +151,15 @@
             // 
             this.txtPesquisar.Location = new System.Drawing.Point(242, 44);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(325, 22);
-            this.txtPesquisar.TabIndex = 12;
+            this.txtPesquisar.Size = new System.Drawing.Size(461, 22);
+            this.txtPesquisar.TabIndex = 7;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(574, 42);
+            this.btnPesquisar.Location = new System.Drawing.Point(709, 42);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 13;
+            this.btnPesquisar.TabIndex = 8;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
@@ -163,25 +168,54 @@
             // 
             this.Lst_View.AllowColumnReorder = true;
             this.Lst_View.AutoArrange = false;
+            this.Lst_View.ContextMenuStrip = this.contextMenuStrip1;
             this.Lst_View.FullRowSelect = true;
             this.Lst_View.GridLines = true;
             this.Lst_View.HideSelection = false;
-            this.Lst_View.HoverSelection = true;
             this.Lst_View.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.Lst_View.Location = new System.Drawing.Point(242, 71);
             this.Lst_View.MultiSelect = false;
             this.Lst_View.Name = "Lst_View";
-            this.Lst_View.Size = new System.Drawing.Size(407, 247);
-            this.Lst_View.TabIndex = 14;
+            this.Lst_View.Size = new System.Drawing.Size(542, 254);
+            this.Lst_View.TabIndex = 9;
             this.Lst_View.UseCompatibleStateImageBehavior = false;
             this.Lst_View.View = System.Windows.Forms.View.Details;
+            this.Lst_View.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.Lst_View_ItemSelectionChanged);
+            this.Lst_View.Click += new System.EventHandler(this.Lst_View_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsExcluir});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 28);
+            this.contextMenuStrip1.Text = "Excluir Contato";
+            // 
+            // cmsExcluir
+            // 
+            this.cmsExcluir.Name = "cmsExcluir";
+            this.cmsExcluir.Size = new System.Drawing.Size(178, 24);
+            this.cmsExcluir.Text = "Excluir Contato";
+            this.cmsExcluir.Click += new System.EventHandler(this.cmsExcluir_Click);
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(123, 302);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(106, 23);
+            this.btnAtualizar.TabIndex = 6;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // CadastrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 438);
+            this.ClientSize = new System.Drawing.Size(805, 362);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.Lst_View);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtPesquisar);
@@ -196,7 +230,9 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Name = "CadastrarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarCliente";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +253,8 @@
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.ListView Lst_View;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cmsExcluir;
     }
 }

@@ -36,6 +36,9 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.2.1.21\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -98,11 +101,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alugar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alugar.Designer.cs">
+      <DependentUpon>Alugar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Negocio.cs" />
     <Compile Include="CadastrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadastrarCliente.Designer.cs">
       <DependentUpon>CadastrarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastrarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastrarProduto.Designer.cs">
+      <DependentUpon>CadastrarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Cadastro.cs">
       <SubType>Form</SubType>
@@ -110,11 +126,43 @@
     <Compile Include="Cadastro.Designer.cs">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastro1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro1.Designer.cs">
+      <DependentUpon>Cadastro1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastrar.Designer.cs">
+      <DependentUpon>Cadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmarEmail.Designer.cs">
+      <DependentUpon>ConfirmarEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilmeClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilmeClientes.Designer.cs">
+      <DependentUpon>FilmeClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fila.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="ListarFilmes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListarFilmes.Designer.cs">
+      <DependentUpon>ListarFilmes.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuRestrito.cs">
       <SubType>Form</SubType>
@@ -122,21 +170,69 @@
     <Compile Include="MenuRestrito.Designer.cs">
       <DependentUpon>MenuRestrito.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model%27s\Cliente.cs" />
+    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Filme.cs" />
+    <Compile Include="Model\Pessoa.cs" />
+    <Compile Include="NovoUsuarioSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovoUsuarioSenha.Designer.cs">
+      <DependentUpon>NovoUsuarioSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Perfil.Designer.cs">
+      <DependentUpon>Perfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DataBase.cs" />
+    <Compile Include="Repository\testes.cs" />
+    <Compile Include="TelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaLogin.Designer.cs">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Alugar.resx">
+      <DependentUpon>Alugar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastrarCliente.resx">
       <DependentUpon>CadastrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastrarProduto.resx">
+      <DependentUpon>CadastrarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastro.resx">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cadastro1.resx">
+      <DependentUpon>Cadastro1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastrar.resx">
+      <DependentUpon>Cadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmarEmail.resx">
+      <DependentUpon>ConfirmarEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilmeClientes.resx">
+      <DependentUpon>FilmeClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListarFilmes.resx">
+      <DependentUpon>ListarFilmes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuRestrito.resx">
       <DependentUpon>MenuRestrito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovoUsuarioSenha.resx">
+      <DependentUpon>NovoUsuarioSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Perfil.resx">
+      <DependentUpon>Perfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,7 +242,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TelaLogin.resx">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,6 +261,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ImgCapa\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imgs\led verde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imgs\led vermelho.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

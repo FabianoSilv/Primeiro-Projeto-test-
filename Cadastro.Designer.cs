@@ -28,230 +28,180 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("aaa");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "aaa",
-            "2222"}, -1);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_Nome = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.list_view = new System.Windows.Forms.ListView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.excluirCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSexo = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip1.SuspendLayout();
+            this.txt_Nome = new System.Windows.Forms.TextBox();
+            this.txt_Senha = new System.Windows.Forms.TextBox();
+            this.mtb_CPF = new System.Windows.Forms.MaskedTextBox();
+            this.mtb_Telefone = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.btn_Cadastrar = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_Cancelar);
+            this.groupBox1.Controls.Add(this.btn_Cadastrar);
+            this.groupBox1.Controls.Add(this.txt_Email);
+            this.groupBox1.Controls.Add(this.mtb_Telefone);
+            this.groupBox1.Controls.Add(this.mtb_CPF);
+            this.groupBox1.Controls.Add(this.txt_Senha);
+            this.groupBox1.Controls.Add(this.txt_Nome);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lb_Nome);
+            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(253, 229);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Formulario de Cadastro";
+            // 
+            // lb_Nome
+            // 
+            this.lb_Nome.AutoSize = true;
+            this.lb_Nome.Location = new System.Drawing.Point(7, 24);
+            this.lb_Nome.Name = "lb_Nome";
+            this.lb_Nome.Size = new System.Drawing.Size(35, 13);
+            this.lb_Nome.TabIndex = 0;
+            this.lb_Nome.Text = "Nome";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 20);
+            this.label1.Location = new System.Drawing.Point(7, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome:";
+            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "CPF";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Location = new System.Drawing.Point(135, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Telefone:";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Telefone";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 112);
+            this.label3.Location = new System.Drawing.Point(7, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "CPF:";
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(12, 39);
-            this.txtNome.MaxLength = 25;
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(163, 22);
-            this.txtNome.TabIndex = 3;
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(12, 87);
-            this.txtTelefone.MaxLength = 9;
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(163, 22);
-            this.txtTelefone.TabIndex = 4;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.Location = new System.Drawing.Point(12, 131);
-            this.txtCPF.MaxLength = 13;
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(163, 22);
-            this.txtCPF.TabIndex = 5;
-            this.txtCPF.Click += new System.EventHandler(this.txtCPF_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Novo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // list_view
-            // 
-            this.list_view.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.list_view.ContextMenuStrip = this.contextMenuStrip1;
-            this.list_view.HideSelection = false;
-            listViewItem2.IndentCount = 2;
-            listViewItem2.Tag = "linha1";
-            this.list_view.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.list_view.Location = new System.Drawing.Point(192, 68);
-            this.list_view.MultiSelect = false;
-            this.list_view.Name = "list_view";
-            this.list_view.Size = new System.Drawing.Size(467, 163);
-            this.list_view.TabIndex = 7;
-            this.list_view.UseCompatibleStateImageBehavior = false;
-            this.list_view.View = System.Windows.Forms.View.Details;
-            this.list_view.SelectedIndexChanged += new System.EventHandler(this.list_view_SelectedIndexChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.excluirCToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 28);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
-            // 
-            // excluirCToolStripMenuItem
-            // 
-            this.excluirCToolStripMenuItem.Name = "excluirCToolStripMenuItem";
-            this.excluirCToolStripMenuItem.Size = new System.Drawing.Size(178, 24);
-            this.excluirCToolStripMenuItem.Text = "Excluir Contato";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "E-mail";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(189, 20);
+            this.label4.Location = new System.Drawing.Point(135, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Buscar contato";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Senha";
             // 
-            // txtBuscar
+            // txt_Nome
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(192, 39);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(325, 22);
-            this.txtBuscar.TabIndex = 9;
+            this.txt_Nome.Location = new System.Drawing.Point(10, 41);
+            this.txt_Nome.Name = "txt_Nome";
+            this.txt_Nome.Size = new System.Drawing.Size(100, 20);
+            this.txt_Nome.TabIndex = 5;
             // 
-            // button2
+            // txt_Senha
             // 
-            this.button2.Location = new System.Drawing.Point(523, 38);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.txt_Senha.Location = new System.Drawing.Point(138, 40);
+            this.txt_Senha.Name = "txt_Senha";
+            this.txt_Senha.Size = new System.Drawing.Size(100, 20);
+            this.txt_Senha.TabIndex = 6;
             // 
-            // label5
+            // mtb_CPF
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 160);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Sexo:";
+            this.mtb_CPF.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mtb_CPF.Location = new System.Drawing.Point(10, 94);
+            this.mtb_CPF.Mask = "000,000,000-00";
+            this.mtb_CPF.Name = "mtb_CPF";
+            this.mtb_CPF.Size = new System.Drawing.Size(100, 20);
+            this.mtb_CPF.TabIndex = 7;
+            this.mtb_CPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // txtSexo
+            // mtb_Telefone
             // 
-            this.txtSexo.Location = new System.Drawing.Point(15, 180);
-            this.txtSexo.MaxLength = 10;
-            this.txtSexo.Name = "txtSexo";
-            this.txtSexo.Size = new System.Drawing.Size(160, 22);
-            this.txtSexo.TabIndex = 12;
+            this.mtb_Telefone.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mtb_Telefone.Location = new System.Drawing.Point(138, 94);
+            this.mtb_Telefone.Mask = "(xx) 00000-0000";
+            this.mtb_Telefone.Name = "mtb_Telefone";
+            this.mtb_Telefone.Size = new System.Drawing.Size(100, 20);
+            this.mtb_Telefone.TabIndex = 8;
+            this.mtb_Telefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // button3
+            // txt_Email
             // 
-            this.button3.Location = new System.Drawing.Point(99, 208);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Atualizar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.txt_Email.Location = new System.Drawing.Point(10, 142);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(228, 20);
+            this.txt_Email.TabIndex = 9;
             // 
-            // columnHeader1
+            // btn_Cadastrar
             // 
-            this.columnHeader1.Text = "3123";
+            this.btn_Cadastrar.Location = new System.Drawing.Point(35, 191);
+            this.btn_Cadastrar.Name = "btn_Cadastrar";
+            this.btn_Cadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cadastrar.TabIndex = 10;
+            this.btn_Cadastrar.Text = "Cadastrar";
+            this.btn_Cadastrar.UseVisualStyleBackColor = true;
+            this.btn_Cadastrar.Click += new System.EventHandler(this.btn_Cadastrar_Click);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Location = new System.Drawing.Point(138, 191);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancelar.TabIndex = 11;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // Cadastro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 247);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.txtSexo);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.list_view);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtCPF);
-            this.Controls.Add(this.txtTelefone);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(282, 258);
+            this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Cadastro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro";
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTelefone;
-        private System.Windows.Forms.TextBox txtCPF;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.ListView list_view;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_Cadastrar;
+        private System.Windows.Forms.TextBox txt_Email;
+        private System.Windows.Forms.MaskedTextBox mtb_Telefone;
+        private System.Windows.Forms.MaskedTextBox mtb_CPF;
+        private System.Windows.Forms.TextBox txt_Senha;
+        private System.Windows.Forms.TextBox txt_Nome;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSexo;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem excluirCToolStripMenuItem;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb_Nome;
     }
 }
